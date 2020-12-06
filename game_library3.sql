@@ -52,8 +52,8 @@ CREATE TABLE `developedby` (
   `devID` char(10) NOT NULL,
   PRIMARY KEY (`gameID`,`devID`),
   KEY `devID` (`devID`),
-  CONSTRAINT `developedby_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE,
-  CONSTRAINT `developedby_ibfk_2` FOREIGN KEY (`devID`) REFERENCES `developer` (`devID`) ON UPDATE CASCADE
+  CONSTRAINT `developedby_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT `developedby_ibfk_2` FOREIGN KEY (`devID`) REFERENCES `developer` (`devID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -106,7 +106,7 @@ CREATE TABLE `game` (
   `pubID` char(10) NOT NULL,
   PRIMARY KEY (`gameID`),
   KEY `pubID` (`pubID`),
-  CONSTRAINT `game_ibfk_1` FOREIGN KEY (`pubID`) REFERENCES `publisher` (`pubID`) ON UPDATE CASCADE
+  CONSTRAINT `game_ibfk_1` FOREIGN KEY (`pubID`) REFERENCES `publisher` (`pubID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,7 +131,7 @@ CREATE TABLE `gamegenre` (
   `gameID` char(10) NOT NULL,
   `gameGenre` char(30) NOT NULL,
   PRIMARY KEY (`gameID`,`gameGenre`),
-  CONSTRAINT `gamegenre_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE
+  CONSTRAINT `gamegenre_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -157,8 +157,8 @@ CREATE TABLE `operatedby` (
   `gameID` char(10) NOT NULL,
   PRIMARY KEY (`consoleID`,`gameID`),
   KEY `gameID` (`gameID`),
-  CONSTRAINT `operatedby_ibfk_1` FOREIGN KEY (`consoleID`) REFERENCES `console` (`consoleID`) ON UPDATE CASCADE,
-  CONSTRAINT `operatedby_ibfk_2` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE
+  CONSTRAINT `operatedby_ibfk_1` FOREIGN KEY (`consoleID`) REFERENCES `console` (`consoleID`) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT `operatedby_ibfk_2` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -208,8 +208,8 @@ CREATE TABLE `trackedby` (
   `userID` char(10) NOT NULL,
   PRIMARY KEY (`gameID`,`userID`),
   KEY `userID` (`userID`),
-  CONSTRAINT `trackedby_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE,
-  CONSTRAINT `trackedby_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON UPDATE CASCADE
+  CONSTRAINT `trackedby_ibfk_1` FOREIGN KEY (`gameID`) REFERENCES `game` (`gameID`) ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT `trackedby_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

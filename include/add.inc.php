@@ -1,8 +1,13 @@
 
 <html>
+    <head>
+        <title>Add a Game</title>
+        <link href="../css/main.css" rel="stylesheet" type="text/css">
+    </head>
 
     
     <body>
+        <h2>Add a Game </h2>
         <form action="consoleadd.php" method="POST">
             <input type="text" name="gameID" placeholder="GameID">
             <br>
@@ -20,23 +25,14 @@
             <input type="text" name="devName" placeholder="DeveloperName (optional)">
             <br>
 
-            <input type="text" name="gameGenre" placeholder="Separate genres by comma">
+            <input type="text" name="gameGenre" placeholder="Separate genres by comma" size=30>
             <br>
 
-            <input type="checkbox" name="console1" value="Xbox One">
-            <label for="console1"> Xbox One</label><br>
-
-            <input type="checkbox" name="console2" value="Playstation 4">
-            <label for="console2"> Playstation 4</label><br>
-
-            <input type="checkbox" name="console3" value="PC">
-            <label for="console3"> PC</label><br>
-
-            <input type="checkbox" name="console4" value="Switch">
-            <label for="console4"> Switch</label><br>
+            <input type="text" name="consoles" placeholder="Separate ConsoleID by comma" size=30>
+            <br>
 
             <br>
-            <button type="submit" name="submit">Add</button>
+            <button type="submit" name="submit">Add/Edit</button>
         </form>
 
         

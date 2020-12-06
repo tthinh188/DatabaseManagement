@@ -14,12 +14,25 @@
 
     <!-- CONTENT -->
 
-    <!--Add Console Button-->
+    <!--Modifier Buttons-->
 	<h3>
-    <a href="include/add.inc.php" class="button">Add Game</a>
+    <a href="include/add.inc.php" class="button">Add/Edit Game</a>
+	<br>
+	<br>
     <a href="include/remove.inc.php" class="button">Remove Game</a>
-    <a href="include/edit.inc.php" class="button">Edit Game</a>
+	<br>
+	<br>
+	<a href="include/console.inc.php" class="button">Add/Edit Console</a>
     <br>
+	<br>
+	<a href="include/removeconsole.inc.php" class="button">Remove Console</a>
+	<br>
+	<br>
+	<a href="include/adduser.inc.php" class="button">Add/Edit User</a>
+	<br>
+	<br>
+	<a href="include/removeuser.inc.php" class="button">Remove User</a>
+	<br>
 	</h3>
 
     <h2> Game </h2>
@@ -64,11 +77,26 @@
 	<h2> Game Genre </h2>
 	
 	<?php
-	$query = mysqli_query($sql, "SELECT * FROM gamegenre");
+	$query = mysqli_query($sql, "SELECT * FROM game");
 	while($row = mysqli_fetch_assoc($query))
 	{
-	echo "Game ID: {$row['gameID']} || Game Genre: {$row['gameGenre']}<br>";
-	}?>
+		$gameset[] = $row;
+	}
+	foreach ($gameset as $game) {
+		$gameID = $game['gameID'];
+		$query = mysqli_query($sql, "SELECT gameGenre FROM gamegenre WHERE gameID IN (SELECT gameID FROM
+		game WHERE gameID = '$gameID')");
+
+		echo "<b>{$game['gameName']} </b>:  ";
+		while($row = mysqli_fetch_assoc($query)) {
+			$gamearray[] = $row['gameGenre'];
+		}
+		$gamearray = array_unique($gamearray, SORT_REGULAR);
+		echo implode(', ', $gamearray);
+		$gamearray = array();
+		echo "</br>";
+	}
+	?>
 	
 	<h2> Publisher </h2>
 	<!-- This is done the same way we handled game. -->
@@ -87,7 +115,6 @@
 	{
 		$userset[] = $row;
 	}
-	// Every unique user has to have their game ID's tracked, this is how we display which games they own. We do the same with User ID's to display users //
 	foreach ($userset as $user) {
 		$userID = $user['userID'];
 		$query = mysqli_query($sql, "SELECT gameName FROM game WHERE gameID IN (SELECT gameID FROM
@@ -100,7 +127,6 @@
 		echo implode(', ', $gamearray);
 		$gamearray = array();
 		echo "</br>";
-			
 	}
 	?>
 
@@ -141,7 +167,6 @@
 		$consoleID = $console['consoleID'];
 		$query = mysqli_query($sql, "SELECT gameName FROM game WHERE gameID IN (SELECT gameID FROM
 		operatedby WHERE consoleID = '$consoleID')");
-		// We also decided to make console names bold //
 		echo "<b>{$console['consoleName']} </b>:  ";
 		while($row = mysqli_fetch_assoc($query)) {
 			$gamearray[] = $row['gameName'];
@@ -151,10 +176,8 @@
 		$gamearray = array();
 		echo "</br>";
 		
-		
 	}
 	?>
-	
     
     <!-- FOOTER -->
     <?php include('templates/footer.php'); ?>

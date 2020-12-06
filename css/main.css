@@ -1,0 +1,25 @@
+header	{
+	text-align: center; /* This just sets the text to the center of the screen */
+}
+
+body	{
+	background-color: #FBE4FF; /* This is the hex color for the screen */
+	text-align: center;
+	border-left: solid #957DAD 200px;
+	border-right: solid #957DAD 200px;
+	padding:0;
+	margin:0;
+}
+
+h2	{text-decoration: underline;	/* This sets the text in the center of h2 to be underlined */
+	text-align: center;
+}
+	
+h3	{
+text-align: center;
+border-style: outset;	/* This sets up the border for the buttons */
+display: inline;
+text-transform: uppercase;	/* This Forces the button text to ALL CAPS */
+word-spacing: 2px;
+box-shadow: 2.5px 5px 5px gray;	/* This sets up a shadow for the border */
+}

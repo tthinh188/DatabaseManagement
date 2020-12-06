@@ -14,6 +14,12 @@
     $removedevelopedby = "DELETE FROM developedby WHERE gameID = '$gameID'";
     mysqli_query($sql, $removedevelopedby);
 
+    $removepub = "DELETE FROM publisher WHERE pubID NOT IN (SELECT pubID FROM game)";
+    mysqli_query($sql, $removepub);
+
+    $removedev = "DELETE FROM developer WHERE devID NOT IN (SELECT devID FROM developedby)";
+    mysqli_query($sql, $removedev);
+
     $remove = "DELETE FROM game WHERE gameID = '$gameID'";
 
     mysqli_query($sql, $remove);
