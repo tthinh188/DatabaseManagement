@@ -12,6 +12,7 @@
         </div>
         <br>
         <form action="removeconsole.php" method="POST">
+        <!--Input to remove console-->
             <input type="text" name="consoleID" placeholder="ConsoleID to remove">
             
             <br>

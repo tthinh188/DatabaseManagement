@@ -1,14 +1,16 @@
 
 <html>
     <head>
-        <title>Add a Game</title>
+        <title>Add/Edit a Game</title>
         <link href="../css/main.css" rel="stylesheet" type="text/css">
     </head>
 
     
     <body>
-        <h2>Add a Game </h2>
-        <form action="consoleadd.php" method="POST">
+        <h2>Add/Edit a Game </h2>
+
+        <!--Input to add/edit a game-->
+        <form action="add.php" method="POST">
             <input type="text" name="gameID" placeholder="GameID">
             <br>
             <input type="text" name="gameTitle" placeholder="GameTitle">
@@ -28,7 +30,7 @@
             <input type="text" name="gameGenre" placeholder="Separate genres by comma" size=30>
             <br>
 
-            <input type="text" name="consoles" placeholder="Separate ConsoleID by comma" size=30>
+            <input type="text" name="consoles" placeholder="Add consoleID for game" size=30>
             <br>
 
             <br>

@@ -8,6 +8,7 @@
     <body>
         <h2>Remove a User</h2>
         <form action="removeuser.php" method="POST">
+        <!--Input to remove a user-->
             <input type="text" name="userID" placeholder="UserID">
             <br>
             
